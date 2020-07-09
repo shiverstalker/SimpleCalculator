@@ -1,14 +1,36 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
-function add(num1, num2) {
-    const result = num1 + num2;
-    return result;
+function add() {
+  const calcDescription = `(${currentResult}) + (${userInput.value})`;
+  currentResult = currentResult + parseInt(userInput.value);
+  outputResult(currentResult, calcDescription);
 }
 
-currentResult = add(1, 2); 
+function subtract() {
+  const calcDescription = `(${currentResult}) - (${userInput.value})`;
+  currentResult = currentResult - parseInt(userInput.value);
+  outputResult(currentResult, calcDescription);
+}
 
-let calculationDescription = `(${defaultResult})`;
+function multiply() {
+  const calcDescription = `(${currentResult}) * (${userInput.value})`;
+  currentResult = currentResult * parseInt(userInput.value);
+  outputResult(currentResult, calcDescription);
+}
 
-outputResult(currentResult, calculationDescription);
- 
+function divide() {
+  if (parseInt(userInput.value) != 0) {
+    const calcDescription = `(${currentResult}) / (${userInput.value})`;
+    currentResult = currentResult / parseInt(userInput.value);
+    outputResult(currentResult, calcDescription);
+  } else {
+    alert("Can't devide by Zero");
+  }
+}
+
+addBtn.addEventListener("click", add);
+subtractBtn.addEventListener("click", subtract);
+multiplyBtn.addEventListener("click", multiply);
+divideBtn.addEventListener("click", divide);
+
