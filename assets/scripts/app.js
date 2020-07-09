@@ -25,7 +25,7 @@ function divide() {
     currentResult = currentResult / parseInt(userInput.value);
     outputResult(currentResult, calcDescription);
   } else {
-    alert("Can't devide by Zero");
+    alert("Can't devide by Zero in R");
   }
 }
 
