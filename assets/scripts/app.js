@@ -1,10 +1,22 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
+let logEntries = [];
 
 
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
   const calcDescription = `(${resultBeforeCalc}) ${operator} (${calcNumber})`
   outputResult(currentResult, calcDescription)
+  logEntries.push(calcDescription);
+}
+
+function writeToLog(operationIdentifier, prevResult, operationNumber, newResult) {
+   const logEntry = {
+     opperation: operationIdentifier,
+     prev: prevResult,
+     number: operationNumber,
+     result: newResult
+   };
+   console.log(logEntry);
 }
 
 function add() {
@@ -12,6 +24,7 @@ function add() {
   const initialResult = currentResult;
   currentResult += parseInt(userInput.value);
   createAndWriteOutput("+" , initialResult, userInput.value);
+  writeToLog('ADD', initialResult, userInput.value, currentResult);
 } else {alert("Please input a number")}
 }
 
@@ -20,6 +33,7 @@ function subtract() {
   const initialResult = currentResult;
   currentResult -= parseInt(userInput.value);
   createAndWriteOutput("-" , initialResult, userInput.value);
+  writeToLog('SUBTRACT', initialResult, userInput.value, currentResult);
 } else {alert("Please input a number")}
 }
 
@@ -28,6 +42,7 @@ function multiply() {
   const initialResult = currentResult;
   currentResult *= parseInt(userInput.value);
   createAndWriteOutput("*" , initialResult, userInput.value);
+  writeToLog('MULTIPLY', initialResult, userInput.value, currentResult);
 } else {alert("Please input a number")}
 }
 
@@ -36,6 +51,7 @@ function divide() {
     const initialResult = currentResult;
     currentResult /= parseInt(userInput.value);
     createAndWriteOutput("/" , initialResult, userInput.value);
+    writeToLog('DIVIDE', initialResult, userInput.value, currentResult);
   } else {
     alert("Can't devide by Zero in R or input a number!");
   }
