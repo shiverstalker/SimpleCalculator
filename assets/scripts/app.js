@@ -1,29 +1,35 @@
 const defaultResult = 0;
 let currentResult = defaultResult;
 
+
+function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
+  const calcDescription = `(${resultBeforeCalc}) ${operator} (${calcNumber})`
+  outputResult(currentResult, calcDescription)
+}
+
 function add() {
-  const calcDescription = `(${currentResult}) + (${userInput.value})`;
+  const initialResult = currentResult;
   currentResult = currentResult + parseInt(userInput.value);
-  outputResult(currentResult, calcDescription);
+  createAndWriteOutput("+" , initialResult, userInput.value);
 }
 
 function subtract() {
-  const calcDescription = `(${currentResult}) - (${userInput.value})`;
+  const initialResult = currentResult;
   currentResult = currentResult - parseInt(userInput.value);
-  outputResult(currentResult, calcDescription);
+  createAndWriteOutput("-" , initialResult, userInput.value);
 }
 
 function multiply() {
-  const calcDescription = `(${currentResult}) * (${userInput.value})`;
+  const initialResult = currentResult;
   currentResult = currentResult * parseInt(userInput.value);
-  outputResult(currentResult, calcDescription);
+  createAndWriteOutput("*" , initialResult, userInput.value);
 }
 
 function divide() {
   if (parseInt(userInput.value) != 0) {
-    const calcDescription = `(${currentResult}) / (${userInput.value})`;
+    const initialResult = currentResult;
     currentResult = currentResult / parseInt(userInput.value);
-    outputResult(currentResult, calcDescription);
+    createAndWriteOutput("/" , initialResult, userInput.value);
   } else {
     alert("Can't devide by Zero in R");
   }
